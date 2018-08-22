@@ -1,0 +1,24 @@
+{
+  "name": "letsplayseattle",
+  "version": "1.0.0",
+  "description": "Find pickup sports around town",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Rufasa85/LetsPlaySeattle.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Rufasa85/LetsPlaySeattle/issues"
+  },
+  "homepage": "https://github.com/Rufasa85/LetsPlaySeattle#readme",
+  "dependencies": {
+    "dotenv": "^6.0.0",
+    "ejs": "^2.6.1",
+    "express": "^4.16.3"
+  }
+}
