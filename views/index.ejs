@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<script
+  src="https://code.jquery.com/jquery-3.3.1.min.js"
+  integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+  crossorigin="anonymous"></script>
+  <link rel="stylesheet" type="text/css" href="css/style.css">
+</head>
+<body>
+	<form class = 'featureSearch'>
+		<input type="text" name="search" id = 'search'>
+	</form>
+	<div id="map"></div>
+	<div id="results">
+		
+	</div>
+	<script type="text/javascript" src='js/maps.js'></script>
+	<script type="text/javascript" src='js/ajax.js'></script>
+	<script src="https://maps.googleapis.com/maps/api/js?key=<%=process.env.GOOGLE_API_KEY%>&callback=initMap"
+    async defer></script>
+</body>
+</html>
