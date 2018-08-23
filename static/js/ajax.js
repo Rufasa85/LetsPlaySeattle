@@ -5,6 +5,14 @@ $(document).ready(function(){
           markerArr[i].setMap(map);
         }
 	}
+	function showPage() {
+ 	 	document.getElementById("loader").style.display = "none";
+  		document.getElementById("content").style.display = "block";
+	}
+	function hidePage() {
+		document.getElementById("loader").style.display = "block";
+  		document.getElementById("content").style.display = "none";	
+	}
 	function distance(lat1, lon1, lat2, lon2, unit="K") {
 		let radlat1 = Math.PI * lat1/180
 		let radlat2 = Math.PI * lat2/180
@@ -23,18 +31,20 @@ $(document).ready(function(){
 	}
 	$('.featureSearch').on('submit',function(e) {
 		e.preventDefault();
+		hidePage();
 		let searchTerm = this.querySelector('#search').value;
 		$.ajax({
 			method:'GET',
 			url: `https://data.seattle.gov/resource/64yg-jvpt.json?feature_desc=${searchTerm}`
 		}).done(data=>{
+			console.log('ajaxed')
 			let resultsArr = [];	
 			let myCoords;
 			setMapOnAll(null);
 			markerArr=[];
 			navigator.geolocation.getCurrentPosition(position=>{
 				myCoords = position.coords;
-					
+				console.log('positioned')
 				data.forEach(result=>{
 					if (result['location_1']) {				
 						let coords = '';
@@ -61,6 +71,7 @@ $(document).ready(function(){
 				})
 				let resultsDisplay = document.querySelector('#results');
 				resultsDisplay.innerHTML = displayArr.join('');
+				showPage();
 			})
 		});
 	})
