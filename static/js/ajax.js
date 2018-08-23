@@ -1,5 +1,11 @@
 $(document).ready(function(){
 	console.log('linked');
+	let markerArr = [];
+	function setMapOnAll(map) {
+		for (var i = 0; i < markerArr.length; i++) {
+          markerArr[i].setMap(map);
+        }
+	}
 	function distance(lat1, lon1, lat2, lon2, unit="K") {
 		let radlat1 = Math.PI * lat1/180
 		let radlat2 = Math.PI * lat2/180
@@ -27,6 +33,8 @@ $(document).ready(function(){
 			let resultsArr = [];
 			console.log('ajax done')
 			let myCoords;
+			setMapOnAll(null);
+			markerArr=[];
 			navigator.geolocation.getCurrentPosition(position=>{
 				myCoords = position.coords;
 			
@@ -45,9 +53,10 @@ $(document).ready(function(){
 							let marker = new google.maps.Marker({
 							    position: {lat:result['location_1']['coordinates'][0],lng:result['location_1']['coordinates'][1]},
 							    map: map,
-							    title:result.name,
-							    animation: google.maps.Animation.DROP
+							    title:result.name
+
 			  				});
+			  				markerArr.push(marker);
 					}
 				})
 				resultsArr.sort((a,b)=>{
