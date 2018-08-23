@@ -1,5 +1,4 @@
 $(document).ready(function(){
-	console.log('linked');
 	let markerArr = [];
 	function setMapOnAll(map) {
 		for (var i = 0; i < markerArr.length; i++) {
@@ -22,7 +21,6 @@ $(document).ready(function(){
 		if (unit=="N") { dist = dist * 0.8684 }
 		return dist
 	}
-	console.log('funcionts')	
 	$('.featureSearch').on('submit',function(e) {
 		e.preventDefault();
 		let searchTerm = this.querySelector('#search').value;
@@ -30,21 +28,17 @@ $(document).ready(function(){
 			method:'GET',
 			url: `https://data.seattle.gov/resource/64yg-jvpt.json?feature_desc=${searchTerm}`
 		}).done(data=>{
-			let resultsArr = [];
-			console.log('ajax done')
+			let resultsArr = [];	
 			let myCoords;
 			setMapOnAll(null);
 			markerArr=[];
 			navigator.geolocation.getCurrentPosition(position=>{
 				myCoords = position.coords;
-			
-				console.log(myCoords);
+					
 				data.forEach(result=>{
-					if (result['location_1']) {
-						console.log(result)
+					if (result['location_1']) {				
 						let coords = '';
-						let myDist = distance(myCoords.latitude,myCoords.longitude,result['location_1']['coordinates'][0],result['location_1']['coordinates'][1]);
-						console.log(myDist, 'kilos')
+						let myDist = distance(myCoords.latitude,myCoords.longitude,result['location_1']['coordinates'][0],result['location_1']['coordinates'][1]);				
 						if(result['location_1']&&result['location_1']['coordinates']) coords = `<p><location: ${result['location_1']['coordinates']}/p>`
 						resultsArr.push({
 							distance:myDist,
@@ -61,8 +55,7 @@ $(document).ready(function(){
 				})
 				resultsArr.sort((a,b)=>{
 					return a['distance']-b['distance']
-				});
-				console.log(resultsArr)
+				});		
 				let displayArr = resultsArr.map(obj=>{
 					return obj['text'];
 				})
