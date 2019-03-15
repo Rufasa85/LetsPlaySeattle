@@ -2,6 +2,7 @@ function showPage() {
  	document.getElementById("loader").style.display = "none";
   	document.getElementById("content").style.display = "block";
 }
+let map;
 function initMap() {
 	navigator.geolocation.getCurrentPosition(position=> {
   		map = new google.maps.Map(document.getElementById('map'), {

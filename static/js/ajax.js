@@ -36,8 +36,9 @@ $(document).ready(function(){
 		$.ajax({
 			method:'GET',
 			url: `https://data.seattle.gov/resource/64yg-jvpt.json?feature_desc=${searchTerm}`
-		}).done(data=>{
+		}).then(data=>{
 			console.log('ajaxed')
+			console.log(data);
 			let resultsArr = [];	
 			let myCoords;
 			setMapOnAll(null);
