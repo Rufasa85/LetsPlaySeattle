@@ -9,8 +9,10 @@
   <link rel="stylesheet" type="text/css" href="css/style.css">
 </head>
 <body >
+	<h1 class = 'center'>Let's Play Seattle!</h1>
 	<div id = 'loader'></div>
 	<div id = 'content' hidden>
+		<div id="map"></div>
 		<form class = 'featureSearch'>
 			<select name="search" id = 'search'>
 				<option value = ''>-----Select Sport-----</option>
@@ -33,9 +35,8 @@
 				<option value = 'Pool (Indoor)'>Indoor Pool</option>
 				<option value = 'Pool (Outdoor)'>Outdoor Pool</option>
 			</select>
-			<input type="Submit" name="Search">
+			<input type="Submit" name="Search" id = 'searchBtn'>
 		</form>
-		<div id="map"></div>
 		<div id="results">
 			
 		</div>
